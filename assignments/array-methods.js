@@ -102,8 +102,15 @@ console.log('sorted Object by lastNames', alphabeticalLastNames);
 
 // Problem 2
 let sizeOfShirts = alphabeticalLastNames.map(a => a);
+
 let compareSizes = (a, b) => {
-    if (a.shirt_size < b.shirt_size) {
+
+    if (a.shirt_size > b.shirt_size) {
+        if (a.shirt_size.slice(0, 1) === isNaN) {
+            a.shirt_size = a.shirt_size.slice(0, 2);
+        } else if (b.shirt_size.slice(0, 1) === isNaN) {
+            b.shirt_size = b.shirt_size.slice(0, 2);
+        }
         return -1;
     } else {
         return 1;
@@ -111,10 +118,28 @@ let compareSizes = (a, b) => {
     return 0;
 };
 
+sizeOfShirts = sizeOfShirts.sort(compareSizes);
 
+console.log("size sort", sizeOfShirts);
+
+let sortedSizes = sizeOfShirts.filter(size => {
+    if (size.shirt_size === "XS") {
+        return size.shirt_size;
+    } else {
+        if (size.shirt_size === "S") return size.shirt_size;
+        if (size.shirt_size === "M") return size.shirt_size;
+        if (size.shirt_size === "L") return size.shirt_size;
+        if (size.shirt_size === "XL") return size.shirt_size;
+        if (size.shirt_size === "2XL") return size.shirt_size;
+        if (size.shirt_size === "3XL") return size.shirt_size;
+    }
+
+
+
+});
 
 //sizeOfShirts = sizeOfShirts.sort(compareSizes);
-console.log("Objects sorted by shirt size", sizeOfShirts.sort(compareSizes));
+console.log("Objects sorted by shirt size", sortedSizes);
 
 
 // Problem 3
