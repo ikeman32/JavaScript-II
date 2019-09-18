@@ -129,17 +129,22 @@ let sortedSizes = sizeOfShirts.filter(size => {
         if (size.shirt_size === "S") return size.shirt_size;
         if (size.shirt_size === "M") return size.shirt_size;
         if (size.shirt_size === "L") return size.shirt_size;
-        if (size.shirt_size === "XL") return size.shirt_size;
-        if (size.shirt_size === "2XL") return size.shirt_size;
-        if (size.shirt_size === "3XL") return size.shirt_size;
+        // if (size.shirt_size === "XL") return size.shirt_size;
+        // if (size.shirt_size === "2XL") return size.shirt_size;
+        // if (size.shirt_size === "3XL") return size.shirt_size;
     }
-
-
-
 });
+let xl = sizeOfShirts.filter(size => size.shirt_size === "XL");
+let xl2 = sizeOfShirts.filter(size => size.shirt_size === "2XL");
+let xl3 = sizeOfShirts.filter(size => size.shirt_size === "3XL");
+sortedSizes = sortedSizes.concat(xl, xl2, xl3);
+
 
 //sizeOfShirts = sizeOfShirts.sort(compareSizes);
-console.log("Objects sorted by shirt size", sortedSizes);
+console.log("Alpha and S to L", sortedSizes);
 
 
 // Problem 3
+let donationsOver100 = sortedSizes.filter(give => give.donation > 100);
+
+console.log("donations over $100", donationsOver100);
